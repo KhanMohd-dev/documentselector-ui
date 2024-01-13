@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { accordionInfo, chipColor, jobTemplates, locations, seniority, subsidiaries } from '../common/common';
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import SearchBar from './SearchBar';
 
 const Agreement: React.FC = () => {
     const [expanded, setExpanded] = useState<string | false>(false);
@@ -102,17 +103,9 @@ const Agreement: React.FC = () => {
                         <label className="font-semibold">Available Documents</label>
                         <div className="col-span-10 pt-2">
                             {/* Search Bar */}
-                            <form>
-                                <div className="relative">
-                                    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                        <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                                        </svg>
-                                    </div>
-                                    <input type="search" className="block w-full p-4 ps-10 text-md text-gray-900 border border-gray-300 rounded-lg dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Search" required />
-                                </div>
-                            </form>
-
+                            <SearchBar
+                                wordsInput={[]}
+                            />
                         </div>
                         <div className="pt-3">
                             <label className="font-semibold pt-10">Filter By:</label>
@@ -192,7 +185,7 @@ const Agreement: React.FC = () => {
                                                                 className={`inline-flex items-center p-1 ms-2 text-sm ${badgeStyle}`}
                                                                 data-dismiss-target={`#badge-dismiss-${index}`}
                                                                 aria-label="Remove"
-                                                                onClick={() => {handleRemovalOfChip(object.option, object.group)}}
+                                                                onClick={() => { handleRemovalOfChip(object.option, object.group) }}
                                                             >
                                                                 <svg className="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
@@ -261,21 +254,15 @@ const Agreement: React.FC = () => {
                         <label className="font-semibold">Selected Documents</label>
                         <div className="col-span-10 pt-2">
                             {/* Search Bar */}
-                            <form>
-                                <div className="relative">
-                                    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                        <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                                        </svg>
-                                    </div>
-                                    <input type="search" className="block w-full p-4 ps-10 text-md text-gray-900 border border-gray-300 rounded-lg dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Search" />
-                                </div>
-                            </form>
+
+                            <SearchBar
+                                wordsInput={listedDocuments.map(item => item.option)}
+                            />
 
                         </div>
 
                         {/* Card to hold the selected documents */}
-                        <div className={`block p-6 bg-gray-100 border rounded-lg shadow mt-3 text-center h-auto ${listedDocuments.length > 0 ? 'border-green-500' : 'border-gray-200'} h-96 relative overflow-x-auto`}>
+                        <div className={`block p-6 bg-gray-100 border rounded-lg shadow mt-3 text-center h-auto ${listedDocuments.length > 0 ? 'border-green-500' : 'border-gray-200'} h-80 relative overflow-x-auto`}>
                             {
                                 listedDocuments.length === 0 ?
                                     (

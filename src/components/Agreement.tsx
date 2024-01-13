@@ -88,10 +88,10 @@ const Agreement: React.FC = () => {
         <div>
             <div className="grid grid-cols-6 gap-4 p-11">
                 <div className="col-start-2 col-span-4 flex justify-center items-center p-5 bg-slate-50">
-                    <Paper variant="outlined" className="p-5">
+                    <div className="border border-gray-300 p-5 rounded-md bg-white">
                         <h3 className="text-xl font-semibold p-4">Which agreements, forms and notices should be sent to Jason Smith?</h3>
                         <h4 className="font-medium pl-4 pb-4">Employees assigned to this job type will be required to review, where relevant fill-in, and sign the following agreements and notices:</h4>
-                    </Paper>
+                    </div>
                 </div>
             </div>
             <div className="grid grid-cols-6 gap-4 justify-center items-center">
@@ -99,7 +99,7 @@ const Agreement: React.FC = () => {
                     <label className="font-medium">Select the agreements, notices and documents you want Jason Smith to sign</label>
                 </div>
                 <div className="col-start-2 col-span-2 flex bg-slate-50 pl-11 ml-5">
-                    <Paper variant="outlined" className="p-5">
+                    <div className="border border-gray-300 p-5 rounded-md bg-white">
                         <label className="font-semibold">Available Documents</label>
                         <div className="col-span-10 pt-2">
                             {/* Search Bar */}
@@ -247,10 +247,10 @@ const Agreement: React.FC = () => {
 
                             ))
                         }
-                    </Paper>
+                    </div>
                 </div>
                 <div className="col-start-4 col-span-2 bg-slate-50 mr-5">
-                    <Paper variant="outlined" className="p-5">
+                    <div className="border border-gray-300 p-5 rounded-md bg-white">
                         <label className="font-semibold">Selected Documents</label>
                         <div className="col-span-10 pt-2">
                             {/* Search Bar */}
@@ -294,7 +294,7 @@ const Agreement: React.FC = () => {
                                     )
                             }
                         </div>
-                    </Paper>
+                    </div>
                 </div>
             </div>
         </div>

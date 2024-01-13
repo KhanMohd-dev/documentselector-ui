@@ -26,6 +26,17 @@ You will also see any lint errors in the console.
 4. Remove the documents, from right pane to clear.
 
 ### `Application View`
+### `View 1`
+<img width="1723" alt="Screenshot 2024-01-13 at 5 07 30 PM" src="https://github.com/KhanMohd-dev/documentselector-ui/assets/39186393/6de1e979-2f03-4090-aaa5-a9194ecd4fcc">
+
+### `View 2`
+<img width="1405" alt="Screenshot 2024-01-13 at 5 11 39 PM" src="https://github.com/KhanMohd-dev/documentselector-ui/assets/39186393/d0f61bac-b538-46e7-bbc2-7450cc6bd999">
+
+### `View 3`
+<img width="1544" alt="Screenshot 2024-01-13 at 5 12 03 PM" src="https://github.com/KhanMohd-dev/documentselector-ui/assets/39186393/779ab20e-0ca9-4f5f-85f5-bce521f324b1">
+
+
+
 
 
 

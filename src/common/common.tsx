@@ -222,3 +222,36 @@ export const chipColor = {
         badge: 'text-purple-400 bg-transparent rounded-sm hover:bg-purple-200 hover:text-purple-900 dark:hover:bg-purple-800 dark:hover:text-purple-300'
     }
 }
+
+export const headings = {
+    "agreements": {
+        value: "Select Agreements, Notices and Other Documents"
+    },
+    "compensation": {
+        value: "Compensation"
+    },
+    "personal info": {
+        value: "Personal Information"
+    },
+    "role": {
+        value: "Role"
+    },
+    "role details": {
+        value: "Role Details"
+    },
+    "additional info": {
+        value: "Additional Information"
+    },
+    "source": {
+        value: "Source"
+    },
+    "equipment": {
+        value: "Equipment"
+    },
+    "offer": {
+        value: "Offer"
+    },
+    "review": {
+        value: "Review"
+    },
+}

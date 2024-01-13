@@ -1,8 +1,11 @@
 import { FC } from 'react';
 import { buttonNames } from '../common/common';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header: FC = () => {
+    const location = useLocation();
+    const path = decodeURIComponent(location.pathname.replace('/', ''));
+
     return (
         <div className="justify-between shadow-lg">
             <div className="flex justify-between p-5">
@@ -18,7 +21,7 @@ const Header: FC = () => {
             <div className="flex justify-center pt-0 pb-4">
                 {buttonNames.map((name: string, index: number) => (
                     <>
-                        <button key={index} className="bg-white hover:bg-gray-100 text-green-600 font-semibold py-2 px-4 border border-gray-400 rounded shadow ml-2 mr-2">
+                        <button key={index} className={`bg-white text-green-600 font-semibold py-2 px-4 border rounded shadow ml-2 mr-2 ${name.toLowerCase() === path.toLowerCase() ? 'bg-orange-100 border-orange-500': 'border-gray-400'}`}>
                             {<Link to={`/${name.toLowerCase()}`}>{name}</Link>}
                         </button>
                         {index < buttonNames.length - 1 &&

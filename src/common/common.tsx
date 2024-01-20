@@ -1,3 +1,5 @@
+import { generateUniqueId } from "../utils/helper"
+
 export const buttonNames = ['Personal Info', 'Role', 'Role Details', 'Compensation', 'Agreements', 'Additional info', 'Source', 'Equipment', 'Offer', 'Review']
 
 
@@ -222,3 +224,110 @@ export const chipColor = {
         badge: 'text-purple-400 bg-transparent rounded-sm hover:bg-purple-200 hover:text-purple-900 dark:hover:bg-purple-800 dark:hover:text-purple-300'
     }
 }
+
+export const headings = {
+    "agreements": {
+        value: "Select Agreements, Notices and Other Documents"
+    },
+    "compensation": {
+        value: "Compensation"
+    },
+    "personal info": {
+        value: "Personal Information"
+    },
+    "role": {
+        value: "Role"
+    },
+    "role details": {
+        value: "Role Details"
+    },
+    "additional info": {
+        value: "Additional Information"
+    },
+    "source": {
+        value: "Source"
+    },
+    "equipment": {
+        value: "Equipment"
+    },
+    "offer": {
+        value: "Offer"
+    },
+    "review": {
+        value: "Review"
+    },
+}
+
+export const selectValues = [
+    {
+        displayName: "Teamsters 105",
+        value: "Teamsters 105"
+    },
+    {
+        displayName: "Steel Workers 105",
+        value: "Steel Workers 105"
+    },
+    {
+        displayName: "Paving Contract Union 54",
+        value: "Paving Contract Union 54"
+    },
+]
+
+export const addCompensationDropdown = [
+    {
+        id: generateUniqueId(),
+        displayName: "Signing Bonus",
+        value: "Signing Bonus",
+        type: "default"
+    },
+    {
+        id: generateUniqueId(),
+        displayName: "Relocation Bonus",
+        value: "Relocation Bonus",
+        type: "default"
+    },
+    {
+        id: generateUniqueId(),
+        displayName: "Discretionary Year-End Bonus",
+        value: "Discretionary Year-End Bonus",
+        type: "default"
+    },
+    {
+        id: generateUniqueId(),
+        displayName: "Discretionary Peformance Bonus",
+        value: "Discretionary Peformance Bonus",
+        type: "default"
+    },
+    {
+        id: generateUniqueId(),
+        displayName: "Vehicle Allowance",
+        value: "Vehicle Allowance",
+        type: "default"
+    },
+    {
+        id: generateUniqueId(),
+        displayName: "Healthcare Contribution",
+        value: "Healthcare Contribution",
+        type: "default"
+    },
+    {
+        id: generateUniqueId(),
+        displayName: "Phone Stipend",
+        value: "Phone Stipend",
+        type: "default"
+    },
+    {
+        id: generateUniqueId(),
+        displayName: "401(k)",
+        value: "401k",
+        type: "default"
+    }
+]
+
+export const PERIOD_DROPDOWN = ["Days", "Month(s)", "Year(s)"]
+
+export const FREQUENCY_DROPDOWN = ["Once", "Monthly", "Yearly", "Quarterly"]
+
+export const WHEN_DROPDOWN = ["At the end of each period", "As part of their first pay run", "Number of days after they start work"]
+
+export const DAYS_DROPDOWN = ["30", "60", "90", "120"]

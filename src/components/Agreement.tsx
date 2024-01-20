@@ -1,4 +1,3 @@
-import Paper from '@mui/material/Paper';
 import React, { useState } from 'react';
 import { accordionInfo, chipColor, jobTemplates, locations, seniority, subsidiaries } from '../common/common';
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
@@ -14,6 +13,11 @@ const Agreement: React.FC = () => {
     const [location, setLocation] = useState<string>('')
     const [isSeniority, setIsSeniority] = useState<string>('')
     const [isSubsidiaries, setIsSubsisdiaries] = useState<string>('')
+    const [jobTemplateOpen, setJobTemplateOpen] = useState<boolean>(false)
+    const [locationOpen, setLocationOpen] = useState<boolean>(false)
+    const [seniorityOpen, setSeniorityOpen] = useState<boolean>(false)
+    const [subsidiaryOpen, setSubsidiaryOpen] = useState<boolean>(false)
+
 
     // this method is expand / collapse the Accordion
     const handleChange = (panel: string) => {
@@ -43,15 +47,19 @@ const Agreement: React.FC = () => {
         switch (group?.toLowerCase()) {
             case "job templates":
                 setIsJobTemplate(option)
+                setJobTemplateOpen(!jobTemplateOpen)
                 break
             case "locations":
                 setLocation(option)
+                setLocationOpen(!locationOpen)
                 break
             case "seniority":
                 setIsSeniority(option)
+                setSeniorityOpen(!seniorityOpen)
                 break
             case "subsidiary":
                 setIsSubsisdiaries(option)
+                setSubsidiaryOpen(!subsidiaryOpen)
                 break
         }
 
@@ -107,56 +115,112 @@ const Agreement: React.FC = () => {
                                 wordsInput={[]}
                             />
                         </div>
-                        <div className="pt-3">
+                        <div className="pt-3 relative ml-3">
                             <label className="font-semibold pt-10">Filter By:</label>
                             {/* Selection for choosing different values from dropdown */}
-                            <div className="pt-2 flex">
-                                <select data-te-select-init data-te-select-filter="true" id="jobtemplate" className="bg-gray-50 border border-gray-300 text-black text-md rounded-lg focus:border-gray-500 focus:ring-gray-500 p-2 dark:bg-gray-100 dark:text-white dark:focus:ring-blue-500 w-3/5"
-                                    value={isJobTemplate}
-                                    onChange={(e) => { handleFilterSelection(e.target.value, "Job Templates") }}
-                                >
-                                    <option defaultValue={"Job Templates"}>Job Templates</option>
-                                    {jobTemplates.map((jobTemplate, index) => (
-                                        <option key={index} value={jobTemplate.value}>
-                                            {jobTemplate.displayName}
-                                        </option>
-                                    ))}
-                                </select>
-                                <select id="locations" className="bg-gray-50 border border-gray-300 text-black text-md rounded-lg focus:border-gray-500 focus:ring-gray-500 p-2 ml-3 dark:bg-gray-100 dark:text-white dark:focus:ring-blue-500 w-3/5"
-                                    value={location}
-                                    onChange={(e) => { handleFilterSelection(e.target.value, "Locations") }}
-                                >
-                                    <option selected>Locations</option>
-                                    {locations.map((location, index) => (
-                                        <option key={index} value={location.value}>
-                                            {location.displayName}
-                                        </option>
-                                    ))}
-                                </select>
+                            <div className="pt-2 flex items-center justify-center">
+                                <div className="w-3/5 h-10 flex items-center justify-between py-3 px-3 border rounded-lg border-gray-400 bg-white dark:border-gray-600 dark:placeholder-gray-400 text-black" tabIndex={0} onClick={() => setJobTemplateOpen(!jobTemplateOpen)}>
+                                    <p className="text-sm">{isJobTemplate ? isJobTemplate : 'Select Job Template'}</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={`w-6 h-6 text-base transition-all ${jobTemplateOpen ? 'rotate-180' : 'rotate-0'} `}>
+                                        <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                {jobTemplateOpen && (
+                                    <div className="absolute z-50 overflow-auto top-14 left-0 w-3/4 transition-all duration-300 ease-in-out h-full">
+                                        <div className=" py-2 bg-white rounded-md shadow-lg mt-8">
+                                            <div className="pt-2">
+                                                {/* Search Bar */}
+
+                                                <SearchBar
+                                                    wordsInput={jobTemplates.map(item => item.value)}
+                                                />
+
+                                            </div>
+                                            {jobTemplates.map((option, index) => (
+                                                <div key={index} className="flex py-2 px-3 cursor-pointer hover:bg-orange-100 hover:rounded-lg" onClick={() => handleFilterSelection(option.value, "Job Templates")}>
+                                                    <p className="text-sm">{option.displayName}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                                <div className="ml-3 w-3/5 h-10 flex items-center justify-between py-3 px-3 border rounded-lg border-gray-400 bg-white dark:border-gray-600 dark:placeholder-gray-400 text-black" tabIndex={0} onClick={() => setLocationOpen(!locationOpen)}>
+                                    <p className="text-sm">{location ? location : 'Select Location'}</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={`w-6 h-6 text-base transition-all ${locationOpen ? 'rotate-180' : 'rotate-0'} `}>
+                                        <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                {locationOpen && (
+                                    <div className="absolute z-50 overflow-auto top-20 left-52 w-2/5">
+                                        <div className="py-2 bg-white rounded-md shadow-lg mt-1">
+                                            <div className="pt-2">
+                                                {/* Search Bar */}
+
+                                                <SearchBar
+                                                    wordsInput={locations.map(item => item.value)}
+                                                />
+
+                                            </div>
+                                            {locations.map((option, index) => (
+                                                <div key={index} className="flex py-2 px-3 cursor-pointer hover:bg-orange-100 hover:rounded-lg" onClick={() => handleFilterSelection(option.value, "Locations")}>
+                                                    <p className="text-sm">{option.displayName}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                             </div>
-                            <div className="pt-2 flex">
-                                <select id="subsidiary" className="bg-gray-50 border border-gray-300 text-black text-md rounded-lg focus:border-gray-500 focus:ring-gray-500 p-2 dark:bg-gray-100 dark:text-white dark:focus:ring-blue-500 w-3/5"
-                                    value={isSubsidiaries}
-                                    onChange={(e) => { handleFilterSelection(e.target.value, "Subsidiary") }}
-                                >
-                                    <option selected>Subsidiary</option>
-                                    {subsidiaries.map((subsidiary, index) => (
-                                        <option key={index} value={subsidiary.value}>
-                                            {subsidiary.displayName}
-                                        </option>
-                                    ))}
-                                </select>
-                                <select id="seniority" className="bg-gray-50 border border-gray-300 text-black text-md rounded-lg focus:border-gray-500 focus:ring-gray-500 p-2 ml-3 dark:bg-gray-100 dark:text-white dark:focus:ring-blue-500 w-3/5"
-                                    value={isSeniority}
-                                    onChange={(e) => { handleFilterSelection(e.target.value, "Seniority") }}
-                                >
-                                    <option selected>Seniority</option>
-                                    {seniority.map((seniority, index) => (
-                                        <option key={index} value={seniority.value}>
-                                            {seniority.displayName}
-                                        </option>
-                                    ))}
-                                </select>
+                            <div className="pt-2 flex items-center justify-center">
+                                <div className="w-3/5 h-10 flex items-center justify-between py-3 px-3 border rounded-lg border-gray-400 bg-white dark:border-gray-600 dark:placeholder-gray-400 text-black" tabIndex={0} onClick={() => setSubsidiaryOpen(!subsidiaryOpen)}>
+                                    <p className="text-sm">{isSubsidiaries ? isSubsidiaries : 'Select Subsidiary'}</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={`w-6 h-6 text-base transition-all ${subsidiaryOpen ? 'rotate-180' : 'rotate-0'} `}>
+                                        <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                {subsidiaryOpen && (
+                                    <div className="absolute z-50 overflow-auto top-28 left-0 w-2/5 transition-all duration-300 ease-in-out h-full">
+                                        <div className=" py-2 bg-white rounded-md shadow-lg mt-8">
+                                            <div className="pt-2">
+                                                {/* Search Bar */}
+
+                                                <SearchBar
+                                                    wordsInput={subsidiaries.map(item => item.value)}
+                                                />
+
+                                            </div>
+                                            {subsidiaries.map((option, index) => (
+                                                <div key={index} className="flex py-2 px-3 cursor-pointer hover:bg-orange-100 hover:rounded-lg" onClick={() => handleFilterSelection(option.value, "Subsidiary")}>
+                                                    <p className="text-sm">{option.displayName}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                                <div className="ml-3 w-3/5 h-10 flex items-center justify-between py-3 px-3 border rounded-lg border-gray-400 bg-white dark:border-gray-600 dark:placeholder-gray-400 text-black" tabIndex={0} onClick={() => setSeniorityOpen(!seniorityOpen)}>
+                                    <p className="text-sm">{isSeniority ? isSeniority : 'Select Seniority'}</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={`w-6 h-6 text-base transition-all ${seniorityOpen ? 'rotate-180' : 'rotate-0'} `}>
+                                        <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                {seniorityOpen && (
+                                    <div className="absolute z-50 overflow-auto top-32 right-5 w-2/5">
+                                        <div className="py-2 bg-white rounded-md shadow-lg mt-1">
+                                            <div className="pt-2">
+                                                {/* Search Bar */}
+
+                                                <SearchBar
+                                                    wordsInput={seniority.map(item => item.value)}
+                                                />
+
+                                            </div>
+                                            {seniority.map((option, index) => (
+                                                <div key={index} className="flex py-2 px-3 cursor-pointer hover:bg-orange-100 hover:rounded-lg" onClick={() => handleFilterSelection(option.value, "Seniority")}>
+                                                    <p className="text-sm">{option.displayName}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                             {/* Handling the filter selection by displaying them in chips */}
                             {
@@ -262,7 +326,7 @@ const Agreement: React.FC = () => {
                         </div>
 
                         {/* Card to hold the selected documents */}
-                        <div className={`block p-6 bg-gray-100 border rounded-lg shadow mt-3 text-center h-auto ${listedDocuments.length > 0 ? 'border-green-500' : 'border-gray-200'} h-80 relative overflow-x-auto`}>
+                        <div className={`block p-6 bg-gray-100 border rounded-lg shadow mt-3 text-center h-auto ${listedDocuments.length > 0 ? 'border-green-500' : 'border-gray-200'} h-96 relative overflow-x-auto`}>
                             {
                                 listedDocuments.length === 0 ?
                                     (

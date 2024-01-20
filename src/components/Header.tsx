@@ -25,7 +25,7 @@ const Header: FC = () => {
             <div className="flex justify-center pt-0 pb-4">
                 {buttonNames.map((name: string, index: number) => (
                     <>
-                        <button key={index} className={`bg-white text-green-600 font-semibold py-2 px-4 border rounded shadow ml-2 mr-2 ${name.toLowerCase() === path.toLowerCase() ? 'bg-orange-200 border-orange-500': 'border-gray-400'}`}>
+                        <button key={index} className={`bg-white text-green-600 font-semibold py-2 px-4 border rounded shadow ml-2 mr-2 ${name.toLowerCase() === path.toLowerCase() ? 'bg-orange-400 border-orange-500 font-extrabold': 'border-gray-400'}`}>
                             {<Link to={`/${name.toLowerCase()}`}>{name}</Link>}
                         </button>
                         {index < buttonNames.length - 1 &&
